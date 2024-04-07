@@ -1,9 +1,9 @@
-const front_end_prefix = "/front_end";
+const frontend_prefix = "/frontend";
 
-export const front_end = {
-  "/front_end/html/": [],
-  "/front_end/css/": [],
-  "/front_end/js/": [
+export const frontend = {
+  "/frontend/html/": [],
+  "/frontend/css/": [],
+  "/frontend/js/": [
     {
       text: "内容",
       collapsed: true,
@@ -11,7 +11,7 @@ export const front_end = {
         {
           text: "数组",
           collapsed: true,
-          items: [{ text: "数组方法", link: "/front_end/js/array/数组方法" }],
+          items: [{ text: "数组方法", link: "/frontend/js/array/数组方法" }],
         },
         {
           text: "对象",
@@ -24,26 +24,55 @@ export const front_end = {
       text: "面试",
       collapsed: true,
       items: [
-        { text: "数组去重", link: "/front_end/js/questions/数组去重" },
-        { text: "数组展平", link: "/front_end/js/questions/数组展平" },
-        { text: "闭包", link: "/front_end/js/questions/闭包" },
+        { text: "数组去重", link: "/frontend/js/questions/数组去重" },
+        { text: "数组展平", link: "/frontend/js/questions/数组展平" },
+        { text: "闭包", link: "/frontend/js/questions/闭包" },
       ],
     },
   ],
-  "/front_end/vue/": [],
-  "/front_end/network/": [],
-  "/front_end/react/": [
+  "/frontend/vue/": [],
+  "/frontend/network/": [],
+  "/frontend/react/": [
     {
       text: "绪论",
-      link: "/front_end/react/index",
+      link: "/frontend/react/index",
     },
   ],
-  "/front_end/threejs" :[
+  "/frontend/threejs": [
     {
-      text: "入门",
-      link: "/front_end/threejs/index"
-    }
-  ]
+      text: "快速开始",
+      link: "/frontend/threejs/index",
+    },
+  ],
+  "/frontend/d3": [
+    {
+      text: "快速开始",
+      link: "/frontend/d3/index",
+    },{
+      text: "可视化",
+      // collapsed: true,
+      items: [
+        {
+          text: '力图',
+          links: '/frontend/d3/visualization/force'
+        },
+        {
+          text: "元素选择与渲染",
+          links: '/frontend/d3/visualization/selection'
+        }
+      ]
+    },
+    {
+      text: "交互",
+      // collapsed: true,
+      items: [
+        {
+          text: "拖拽",
+          link: "/frontend/d3/interaction/drag",
+        },
+      ],
+    },
+  ],
 };
 
 export const theories = {

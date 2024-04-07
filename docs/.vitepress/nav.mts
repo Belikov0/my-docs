@@ -9,14 +9,19 @@ export default [
   {
     text: "前端技术",
     items: [
-      { text: "HTML", link: "/front_end/html/index" },
-      { text: "CSS", link: "/front_end/css/index" },
-      { text: "JavaScript", link: "/front_end/js/index" },
-      { text: "VUE", link: "/front_end/vue/index" },
-      { text: "Network", link: "/front_end/network/index" },
-      { text: "React", link: "/front_end/react/index" },
-      { text: "Node", link: "/front_end/node/index" },
-      {text: "Three.js", link: "/front_end/threejs/index"}
+      { text: "HTML", link: "/frontend/html/index" },
+      { text: "CSS", link: "/frontend/css/index" },
+      { text: "JavaScript", link: "/frontend/js/index" },
+      { text: "VUE", link: "/frontend/vue/index" },
+      { text: "Network", link: "/frontend/network/index" },
+      { text: "React", link: "/frontend/react/index" },
+      { text: "Node", link: "/frontend/node/index" },
+      {text: '可视化', items: [
+        { text: "three.js", link: "/frontend/threejs/index"},
+        { text: "d3.js", link: "/frontend/d3/index" }
+      ]}
+      ,
+
     ],
   },
 ];

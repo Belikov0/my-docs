@@ -1,6 +1,6 @@
 import { defineConfig } from "vitepress";
 import nav from "./nav.mts";
-import { front_end, theories } from "./sidebar.mts";
+import { frontend, theories } from "./sidebar.mts";
 // import sidebar from "./sidebar.mts";
 
 // https://vitepress.dev/reference/site-config
@@ -15,9 +15,7 @@ export default defineConfig({
       provider: "local",
     },
     nav,
-
-    sidebar: { ...front_end, ...theories},
-
+    sidebar: { ...frontend, ...theories},
     socialLinks: [
       { icon: "github", link: "https://github.com/vuejs/vitepress" },
     ],
