@@ -1,5 +1,9 @@
 export default [
   {
+    text: '资源站',
+    link: '/resource'
+  },
+  {
     text: "学科理论",
     items: [
       { text: "计算机网络", link: "/theory/computer_network/index" },
