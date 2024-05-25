@@ -6,10 +6,10 @@
 
 ## TypeScript
 
-(TypeScript学习站)[https://www.cnblogs.com/bleaka/p/16095547.html]
+[TypeScript学习站](https://www.cnblogs.com/bleaka/p/16095547.html)
 
 (ts 学习文档)
 
 ## 设计模式
 
-(patterns.dev)[patterns.dev]
+[patterns.dev](patterns.dev)

@@ -1,8 +1,9 @@
 export default [
   {
-    text: '资源站',
-    link: '/resource'
+    text: "资源站",
+    link: "/resource",
   },
+
   {
     text: "学科理论",
     items: [
@@ -41,10 +42,14 @@ export default [
         items: [
           { text: "three.js", link: "/frontend/threejs/index" },
           { text: "d3.js", link: "/frontend/d3/index" },
-          { text: "tinyColor2", link: "frontend/tinyColor/index"}
+          { text: "tinyColor2", link: "frontend/tinyColor/index" },
         ],
       },
     ],
+  },
+  {
+    text: "前端面试",
+    link: "/_questions/index",
   },
   {
     text: " 开发技术",

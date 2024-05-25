@@ -5,29 +5,35 @@ export const frontend = {
   "/frontend/css/": [],
   "/frontend/js/": [
     {
-      text: "内容",
+      text: "基础",
       collapsed: true,
       items: [
         {
           text: "数组",
           collapsed: true,
-          items: [{ text: "数组方法", link: "/frontend/js/array/数组方法" }],
+          items: [
+            { text: "数组方法", link: "/frontend/js/basic/array/数组方法" },
+          ],
         },
         {
           text: "对象",
           collapsed: true,
-          items: [],
+          items: [{ text: "", link: "" }],
+        },
+        {
+          text: "ES6",
+          collapsed: true,
+          items: [{ text: "", link: "" }],
         },
       ],
     },
     {
-      text: "面试",
+      text: "ES6特性",
       collapsed: true,
       items: [
-        { text: "数组去重", link: "/frontend/js/questions/数组去重" },
-        { text: "数组展平", link: "/frontend/js/questions/数组展平" },
-        { text: "闭包", link: "/frontend/js/questions/闭包" },
-      ],
+        {text: "基础特性", link: '/frontend/js/es6/基础特性'},
+        {text: "Promise",link: '/frontend/js/es6/Promise'}
+      ]
     },
   ],
   "/frontend/vue/": [],
@@ -138,6 +144,20 @@ export const dev = {
     {
       text: "随记",
       link: "dev/exp/casual",
+    },
+  ],
+};
+
+export const questions = {
+  "/_questions": [
+    {
+      text: "JavaScript",
+      collapsed: true,
+      items: [
+        { text: "数组去重", link: "/_questions/js/数组去重" },
+        { text: "数组展平", link: "/_questions/js/数组展平" },
+        { text: "闭包", link: "/_questions/js/闭包" },
+      ],
     },
   ],
 };
