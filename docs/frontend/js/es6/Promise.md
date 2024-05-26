@@ -71,7 +71,7 @@ Promise 的优势：
 *promise*的`then`方法接收两个参数
 
 ```js
-promise.then(onFulfilled, onRejected);
+promise.then(onFulfilled, onRejected)
 ```
 
 -   `onFulfilled`和`onRejected`都是可选的参数
@@ -93,7 +93,7 @@ promise.then(onFulfilled, onRejected);
 -   `then`方法必须返回一个promise
 
     ```js
-    const promise2 = promise1.then(onFulfilled, onRejected);
+    const promise2 = promise1.then(onFulfilled, onRejected)
     ```
 
     -   如果`onFulfilled`或`onRejected`返回了一个*value*=`x`，将执行方法**Promise Resolution Procedure**判断`promise2`和`x`
@@ -119,15 +119,15 @@ promise.then(onFulfilled, onRejected);
 ```js
 const promise = new Promise((resolve, reject) => {
     setTimeout(() => {
-        resolve(1);
-    }, 1000);
-});
+        resolve(1)
+    }, 1000)
+})
 
 const onFulfilled = (res) => {
-    console.log(res);
-};
+    console.log(res)
+}
 
-promise.then(onFulfilled);
+promise.then(onFulfilled)
 ```
 
 ![alt text](static/then.png)
@@ -142,95 +142,95 @@ promise.then(onFulfilled);
 
 ```js
 new Promise((resolve, reject) => {
-    console.log("外部promise的同步执行");
-    resolve();
+    console.log("外部promise的同步执行")
+    resolve()
 })
     .then(() => {
-        console.log("外部第一个then");
-        new Promise((resolve, reject) => {
-            console.log("内部promise的同步执行");
-            resolve();
-        })
-            .then(() => {
-                console.log("内部第一个then");
-            })
-            .then(() => {
-                console.log("内部第二个then");
-            });
+        console.log("外部第一个then")
         return new Promise((resolve, reject) => {
-            console.log("内部promise2");
-            resolve();
+            console.log("内部promise的同步执行")
+            resolve()
         })
             .then(() => {
-                console.log("内部第一个then2");
+                console.log("内部第一个then")
             })
             .then(() => {
-                console.log("内部第二个then2");
-            });
+                console.log("内部第二个then")
+            })
+        return new Promise((resolve, reject) => {
+            console.log("内部promise2")
+            resolve()
+        })
+            .then(() => {
+                console.log("内部第一个then2")
+            })
+            .then(() => {
+                console.log("内部第二个then2")
+            })
     })
     .then(() => {
-        console.log("外部第二个then");
-    });
+        console.log("外部第二个then")
+    })
 ```
 
 ```js
 new Promise((resolve, reject) => {
-    console.log("外部promise");
-    resolve();
+    console.log("外部promise")
+    resolve()
 })
     .then(() => {
-        console.log("外部第一个then");
+        console.log("外部第一个then")
         new Promise((resolve, reject) => {
-            console.log("内部promise");
-            resolve();
+            console.log("内部promise")
+            resolve()
         })
             .then(() => {
-                console.log("内部第一个then");
-                return Promise.resolve();
+                console.log("内部第一个then")
+                return Promise.resolve()
             })
             .then(() => {
-                console.log("内部第二个then");
-            });
+                console.log("内部第二个then")
+            })
     })
     .then(() => {
-        console.log("外部第二个then");
+        console.log("外部第二个then")
     })
     .then(() => {
-        console.log("外部第三个then");
-    });
+        console.log("外部第三个then")
+    })
 ```
 
 ```js
 new Promise((resolve, reject) => {
-    console.log("外部promise");
-    resolve();
+    console.log("外部promise")
+    resolve()
 })
     .then(() => {
-        console.log("外部第一个then");
+        console.log("外部第一个then")
         new Promise((resolve, reject) => {
-            console.log("内部promise");
-            resolve();
+            console.log("内部promise")
+            resolve()
         })
             .then(() => {
-                console.log("内部第一个then");
+                console.log("内部第一个then")
             })
             .then(() => {
-                console.log("内部第二个then");
-            });
+                console.log("内部第二个then")
+            })
         return new Promise((resolve, reject) => {
-            console.log("内部promise2");
-            resolve();
+            console.log("内部promise2")
+            resolve()
         })
             .then(() => {
-                console.log("内部第一个then2");
+                console.log("内部第一个then2")
             })
             .then(() => {
-                console.log("内部第二个then2");
-            });
+                console.log("内部第二个then2")
+            })
     })
     .then(() => {
-        console.log("外部第二个then");
-    });
+        console.log("外部第二个then")
+    })
 ```
 
 ## Promise.all和Promise.race
