@@ -1,4 +1,4 @@
-# Promise
+# Promise v0.1
 
 ## 传统回调的弊端
 
@@ -31,10 +31,15 @@ fn1(10000000, function(result1) => {
 
 Promise 的优势：
 
--   解决回调地狱
--   代码可读性更强（异步转同步）
+-   代码可读性更强
+-   异步操作的顺序
+-   优秀的错误处理
+-   第三方异步库引用的信任问题
+    -   确定回调不会被过早调用（异步被同步调用等）
+    -   确定回调不会被过晚调用或不被调用
+    -   回调次数与预期不相符
 
-## Promise A+规范
+## Promise A+规范 {#promise}
 
 ### 术语
 
@@ -125,23 +130,25 @@ const onFulfilled = (res) => {
 promise.then(onFulfilled);
 ```
 
-`then`会同步将`onFulfilled`和`onRejected`推入`promise`的函数队列中。
-如果promise的状态为*pending*，则不操作函数队列
-promise状态变为*fulfilled*或者*rejected*时，存储队列中的所有`onFulfilled`和`onRejected`将被遍历并根据promise状态选择要执行的函数，
-该函数的执行会根据规范（此处指Promise A+）在规范逻辑中执行，该逻辑模块会被插入微任务队列。
-即**所有回调函数会在promise处于fulfilled或rejected之后立马被推入微队列中**。
+![alt text](static/then.png)
 
-上述例子中，promise会在1秒后执行`resolve`函数并进入`fulfilled`状态，此时promise会将`onFulfilled`函数推入微队列中。
+`then`会同步将`onFulfilled`和`onRejected`推入`promise`的函数队列中，
+如果`promise`的状态为*pending*，则不操作函数队列。
+`promise`状态变为*fulfilled*或者*rejected*时，存储队列中的所有`onFulfilled`和`onRejected`将被遍历并根据`promise`状态选择要执行的函数，
+该函数的执行会根据规范（此处指[Promise A+](#promise)）在规范逻辑中执行，该逻辑模块会被插入微任务队列。
+即**所有回调函数会在promise处于*fulfilled*或*rejected*之后立马被推入微队列中**。
+
+上述例子中，`promise`会在1秒后执行`resolve`函数并进入*fulfilled*状态，此时`promise`会将`onFulfilled`函数推入微队列中。
 
 ```js
 new Promise((resolve, reject) => {
-    console.log("外部promise");
+    console.log("外部promise的同步执行");
     resolve();
 })
     .then(() => {
         console.log("外部第一个then");
         new Promise((resolve, reject) => {
-            console.log("内部promise");
+            console.log("内部promise的同步执行");
             resolve();
         })
             .then(() => {

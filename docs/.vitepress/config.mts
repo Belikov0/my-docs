@@ -5,14 +5,13 @@ import nav from "./nav";
 import * as sidebar from "./sidebar";
 
 const s = () => {
-  const res = {};
-  for (const value of Object.values(sidebar)) {
-    console.log(value);
-    for (const [k, v] of Object.entries(value)) {
-      res[k] = v;
-    }
-  }
-  return res;
+    const res = {};
+      for (const value of Object.values(sidebar)) {
+          for (const [k, v] of Object.entries(value)) {
+              res[k] = v;
+          }
+      }
+    return res;
 };
 
 // https://vitepress.dev/reference/site-config
