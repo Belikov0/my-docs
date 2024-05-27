@@ -10,23 +10,19 @@ export const frontend = {
             items: [
                 {
                     text: "数组",
-                    collapsed: true,
-                    items: [
-                        {
-                            text: "数组方法",
-                            link: "/frontend/js/basic/array/数组方法",
-                        },
-                    ],
+                    link: "/frontend/js/basic/Array",
                 },
                 {
                     text: "对象",
-                    collapsed: true,
-                    items: [{ text: "", link: "" }],
+                    link: "/frontend/js/basic/Object",
                 },
                 {
-                    text: "ES6",
-                    collapsed: true,
-                    items: [{ text: "", link: "" }],
+                    text: "函数",
+                    link: "/frontend/js/basic/Function",
+                },
+                {
+                    text: "字符串",
+                    link: "/frontend/js/basic/String",
                 },
             ],
         },
@@ -154,6 +150,20 @@ export const dev = {
 export const questions = {
     "/_questions": [
         {
+            text: "HTML",
+            collapsed: true,
+            items: [],
+        },
+        {
+            text: "CSS",
+            collapsed: true,
+            items: [
+                { text: "布局", link: "/_questions/css/布局" },
+                { text: "居中", link: "/_questions/css/居中" },
+                { text: "选择器", link: "/_questions/css/选择器" },
+            ],
+        },
+        {
             text: "JavaScript",
             collapsed: true,
             items: [
@@ -162,6 +172,16 @@ export const questions = {
                 { text: "函数", link: "/_questions/js/函数" },
                 { text: "闭包", link: "/_questions/js/闭包" },
                 { text: "防抖和节流", link: "/_questions/js/防抖和节流" },
+            ],
+        },
+        {
+            text: "Web",
+            collapsed: true,
+            items: [
+                { text: "浏览器", link: "/_questions/web/浏览器" },
+                { text: "计算机网络", link: "/_questions/web/计算机网络" },
+                { text: "http协议", link: "_questions/web/http协议" },
+                { text: "tcp-ip协议", link: "_questions/web/tcp-ip协议" },
             ],
         },
     ],
