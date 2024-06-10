@@ -220,11 +220,10 @@ const ageKey = "age"
 
 const person = {
     [nameKey]: "Matt",
-    [ageKey]: 15
+    [ageKey]: 15,
 }
 
 console.log(person) // {name: "Matt", age: 15}
-##
 ```
 
 计算属性本身可以是复杂表达式
