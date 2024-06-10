@@ -386,3 +386,124 @@ console.log(personA.sayHi === personB.sayHi) // false
 ```
 
 ### 原型模式
+
+#### 原型的概念
+
+无论何时，只要创建函数，就会按照**特定的规则**为这个函数创建一个`[[prototype]]`属性（指向**原型对象**）。默认情况所有原型对象自动获得一个`constructor`属性，指回与之关联的构造函数。
+
+```js
+function Person(name, age) {
+    this.name = name
+    this.age = age
+    this.sayHi = function () {
+        console.log(`Hi, I am ${this.name}`)
+    }
+}
+
+console.log(Person.prototype.constructor === Person) // true
+```
+
+正常的原型链会终止与Object，Object原型的原型是`null`
+
+```js
+console.log(Person.prototype.__proto__ === Object.prototype) // true
+console.log(Person.prototype.__proto__.constructor === Object) // true
+console.log(Person.prototype.__proto__.__proto__) // null
+```
+
+每创建一个新的实例，实例内部的`[[prototype]]`指针会指向构造函数的原型对象.实例没有显式的`prototype`属性，在部分实现中可以通过实例的`__proto__`属性访问到实例的原型。不同的实例他们共享一个原型对象。实例和构造函数没有直接的联系，实例和构造函数通过原联系到一起。
+
+```js
+const personA = new Person()
+const personB = new Person()
+console.log(personA.__proto__ === Person.prototype) // true
+console.log(personA.__proto__ === personB.__proto__) // true
+```
+
+在没有实现`__proto__`属性的JavaScript实现中，可以使用`isPrototypeOf()`实例方法和`getPrototypeOf()`静态方法来确定原型。
+
+```js
+console.log(Person.prototype.isPrototypeOf(personA)) // true
+
+console.log(Object.getPrototypeOf(person) === Person.prototype) // true
+```
+
+可以使用`setPrototypeOf()`为一个**对象实例**设置其原型，**但是在实际的代码中总是不推荐显式修改原型的继承关系，因为这很可能会造成意想不到的影响**
+
+```js
+const biped = {
+    numLegs: 2,
+}
+
+const person = {
+    name: "Matt",
+}
+
+Object.setPrototypeOf(person, biped)
+
+console.log(person.numLegs) // 2
+console.log(Object.getPrototypeOf(person) === biped) // true
+```
+
+可以使用`Object.create()`方法在创建实例时为其指定原型
+
+```js
+const biped : {
+    numLegs: 2
+}
+
+const person = Object.create(biped)
+
+console.log(person.numLegs) // 2
+console.log(person.getPrototypeOf(person) === biped) // true
+```
+
+综上，以构造函数`Person`为例，我们可以总结出如下几点
+
+-   构造函数有一个指针属性`[[prototype]]`指向其原型，可以通过`Person.prototype`访问原型
+-   原型上有一个`constructor`属性，指向与之对应的构造函数
+-   构造函数的实例`person`没有`[[prototype]]`属性，不能通过该键值访问到原型
+-   原型的终点通常是Object对象的原型`Object.prototype`
+-   在一部分JavaScript的实现中，实例对象上存在一个`__proto__`属性指向其原型对象，可以通过`person.__proto__`访问，也可以通过方法`Object.getPrototypeOf()`访问到实例的原型
+-   实例与构造函数之间无直接关系，实例的原型指针指向的就是构造函数的原型
+
+根据下一段代码理顺原型之间的关系
+
+```js
+function Person(name, age) {
+    this.name = name
+    this.age = age
+}
+
+Person.prototype.sayHi = function () {
+    console.log(`Hi, I am ${this.name}`)
+}
+
+function Student(id) {
+    this.id = id
+}
+
+Student.prototype.showId = function () {
+    console.log(`My id is ${this.id}`)
+}
+
+// 绑定原型链
+Object.setPrototypeOf(Student.prototype, Person.prototype)
+const student = new Student(10)
+student.name = "Matt"
+student.age = 18
+
+console.log(student.__proto__ === Student.prototype) // true
+console.log(Student.prototype.__proto__ === Person.prototype) // true
+
+student.showId() // My id is 10
+student.sayHi() // Hi, I am Matt
+```
+
+上述代码中，原型链的继承关系如下
+
+![alt text](static/proto.png)
+
+#### 原型的层级
+
+

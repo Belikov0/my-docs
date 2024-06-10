@@ -35,7 +35,16 @@ export const frontend = {
             ],
         },
     ],
-    "/frontend/vue/": [],
+    "/frontend/vue/": [
+        {
+            text: '简介',
+            link: '/frontend/vue/index'
+        },
+        {
+            text: '设计思路',
+            link: '/frontend/vue/设计思路'
+        }
+    ],
     "/frontend/network/": [],
     "/frontend/react/": [
         {
