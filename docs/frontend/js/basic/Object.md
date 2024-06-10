@@ -505,5 +505,3 @@ student.sayHi() // Hi, I am Matt
 ![alt text](static/proto.png)
 
 #### 原型的层级
-
-
