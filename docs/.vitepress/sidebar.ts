@@ -34,16 +34,36 @@ export const frontend = {
                 { text: "Promise", link: "/frontend/js/es6/Promise" },
             ],
         },
+        {
+            text: "进阶",
+            collapsed: true,
+            items: [
+                {
+                    text: "Web Workers",
+                    link: "/frontend/js/further/WebWorkers",
+                },
+            ],
+        },
     ],
     "/frontend/vue/": [
         {
-            text: '简介',
-            link: '/frontend/vue/index'
+            text: "简介",
+            link: "/frontend/vue/index",
         },
         {
-            text: '设计思路',
-            link: '/frontend/vue/设计思路'
-        }
+            text: "设计思路",
+            link: "/frontend/vue/3_设计思路",
+        },
+        {
+            text: "响应系统",
+            collapsed: true,
+            items: [
+                {
+                    text: "响应系统的作用与实现",
+                    link: "/frontend/vue/4_响应系统实现",
+                },
+            ],
+        },
     ],
     "/frontend/network/": [],
     "/frontend/react/": [
@@ -141,7 +161,10 @@ export const dev = {
         {
             text: "开发解决方案",
             collapsed: true,
-            items: [{ text: "1", link: "dev/question/index" }],
+            items: [
+                { text: "1", link: "dev/question/index" },
+                { text: "懒加载", link: "dev/question/懒加载" },
+            ],
         },
     ],
     "dev/exp": [

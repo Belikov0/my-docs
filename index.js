@@ -1,25 +1,91 @@
-function Person(name, age){
-    this.name = name
-    this.age = age
-    
-}
+// const bucket = new WeakMap()
 
-Person.prototype.sayHi = function(){
-    console.log(`Hi, I am ${this.name}`)
-}
+// let activeEffect
 
-function Student(name, age, id){
-    this.id = id
-    this.name = name
-    this.age = age
-}
+// function track(target, key) {
+//     if (!activeEffect) return
 
-Student.prototype.__proto__ = Person.prototype
+//     let depsMap = bucket.get(target)
+//     // 尚没有任何键和副作用函数存在依赖，创建对象到mapper映射
+//     if (!depsMap) {
+//         bucket.set(target, (depsMap = new Map()))
+//     }
+
+//     // 这个键值尚不存在任何依赖其的副作用函数
+//     let deps = depsMap.get(key)
+//     if (!deps) {
+//         depsMap.set(key, (deps = new Set()))
+//     }
+
+//     deps.add(activeEffect)
+// }
+
+// function trigger(target, key) {
+//     const depsMap = bucket.get(target)
+//     if (!depsMap) return
+//     const deps = depsMap.get(key)
+//     deps && deps.forEach((effect) => effect())
+// }
+
+// const data = { ok: true, text: "hello world" }
+// let result = ""
+
+// const obj = new Proxy(data, {
+//     get(target, key) {
+//         track(target, key)
+//         return target[key]
+//     },
+//     set(target, key, newValue) {
+//         target[key] = newValue
+//         trigger(target, key)
+//         return true
+//     },
+// })
+
+// function effect(fn) {
+//     activeEffect = fn
+//     fn()
+// }
+
+// effect(() => {
+//     result = obj.ok ? obj.text : "not"
+// })
+
+// console.log(result)
+// console.log(bucket.get(data))
+
+// obj.ok = false
+
+// console.log(result)
+// console.log(bucket.get(data))
 
 
-const stu = new Student('张三', 15, 100)
 
-console.log(stu instanceof Person)
-stu.sayHi()
+// 主线程
 
-console.log(stu.__proto__, Student.prototype.constructor, stu.constructor)
+const worker = new Worker('./worker.js')
+
+
+
+
+
+worker.addEventListener('message', (e) => {
+    if (e.data instanceof Error){
+        console.log(e.data.message)
+    }else{
+        console.log('result data: ',  e.data)
+    }
+})
+
+worker.addEventListener('messageerror', (e) => {
+    console.log('序列化错误')
+})
+
+worker.postMessage({
+    hello: 'aa'
+})
+
+
+
+
+
