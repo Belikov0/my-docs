@@ -49,6 +49,14 @@ function isChanged(source, target){
     return source === target || !(source === source || target === target)
 }
 
-console.log(isChanged(NaN, NaN))
-console.log(isChanged(NaN, 1))
-console.log(isChanged(1, 2))
+// console.log(isChanged(NaN, NaN))
+// console.log(isChanged(NaN, 1))
+// console.log(isChanged(1, 2))
+
+
+
+
+
+
+
+
